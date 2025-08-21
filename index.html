@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website Under Construction</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #6e8efb, #a777e3);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .container {
+            background-color: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            padding: 40px;
+            max-width: 600px;
+            width: 100%;
+            text-align: center;
+        }
+        
+        .logo {
+            margin-bottom: 30px;
+        }
+        
+        .logo h1 {
+            color: #333;
+            font-size: 28px;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+        
+        .construction-icon {
+            margin: 30px 0;
+        }
+        
+        .construction-icon svg {
+            width: 150px;
+            height: 150px;
+        }
+        
+        h2 {
+            color: #333;
+            font-size: 32px;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+        
+        p {
+            color: #666;
+            font-size: 18px;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+        
+        .notify-form {
+            margin: 30px 0;
+        }
+        
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 20px;
+        }
+        
+        input[type="email"] {
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            margin-bottom: 15px;
+            width: 100%;
+        }
+        
+        button {
+            background: linear-gradient(to right, #6e8efb, #a777e3);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            width: 100%;
+        }
+        
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .social-links {
+            margin-top: 30px;
+        }
+        
+        .social-links a {
+            display: inline-block;
+            margin: 0 10px;
+            color: #666;
+            font-size: 14px;
+            text-decoration: none;
+        }
+        
+        .social-links a:hover {
+            color: #6e8efb;
+        }
+        
+        .countdown {
+            margin: 30px 0;
+            font-size: 20px;
+            color: #333;
+            font-weight: 600;
+        }
+        
+        footer {
+            margin-top: 40px;
+            color: #888;
+            font-size: 14px;
+        }
+        
+        @media (min-width: 768px) {
+            .form-group {
+                flex-direction: row;
+            }
+            
+            input[type="email"] {
+                margin-bottom: 0;
+                margin-right: 10px;
+                flex: 1;
+            }
+            
+            button {
+                width: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo">
+            <h1>YourCompany</h1>
+        </div>
+        
+        <div class="construction-icon">
+            <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <rect x="10" y="60" width="80" height="10" fill="#333" />
+                <rect x="25" y="30" width="50" height="30" fill="#6e8efb" />
+                <rect x="35" y="40" width="10" height="10" fill="#fff" />
+                <rect x="55" y="40" width="10" height="10" fill="#fff" />
+                <path d="M30 60 L20 75 L80 75 L70 60 Z" fill="#a777e3" />
+            </svg>
+        </div>
+        
+        <h2>We're Under Construction</h2>
+        
+        <p>Sorry for the inconvenience, but we're performing some maintenance at the moment. We'll be back online shortly!</p>
+        
+        <div class="countdown">
+            <p>Launching in: <span id="countdown">14</span> days</p>
+        </div>
+        
+        <div class="notify-form">
+            <p>Want to be notified when we launch? Leave your email below!</p>
+            <form id="notification-form">
+                <div class="form-group">
+                    <input type="email" id="email" placeholder="Enter your email address" required>
+                    <button type="submit">Notify Me</button>
+                </div>
+            </form>
+        </div>
+        
+        <div class="social-links">
+            <a href="#">Twitter</a>
+            <a href="#">Facebook</a>
+            <a href="#">Instagram</a>
+            <a href="#">LinkedIn</a>
+        </div>
+        
+        <footer>
+            <p>&copy; 2023 YourCompany. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script>
+        // Simple form submission handling
+        document.getElementById('notification-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = document.getElementById('email').value;
+            alert(`Thanks! We'll notify you at ${email} when we launch.`);
+            document.getElementById('email').value = '';
+        });
+        
+        // Simple countdown timer (launching in 14 days)
+        const launchDate = new Date();
+        launchDate.setDate(launchDate.getDate() + 14);
+        
+        function updateCountdown() {
+            const now = new Date();
+            const diff = launchDate - now;
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            document.getElementById('countdown').textContent = days;
+        }
+        
+        updateCountdown();
+        setInterval(updateCountdown, 60000); // Update every minute
+    </script>
+</body>
+</html>
